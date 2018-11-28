@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MVPDemo.iml" filepath="$PROJECT_DIR$/MVPDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/add_dagger/add_dagger.iml" filepath="$PROJECT_DIR$/add_dagger/add_dagger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mvp+dagger+retrofit/mvp+dagger+retrofit.iml" filepath="$PROJECT_DIR$/mvp+dagger+retrofit/mvp+dagger+retrofit.iml" />
       <module fileurl="file://$PROJECT_DIR$/simple/simple.iml" filepath="$PROJECT_DIR$/simple/simple.iml" />
     </modules>
   </component>

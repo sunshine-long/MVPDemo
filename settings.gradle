@@ -1,1 +1,1 @@
-include ':simple', ':add_dagger'
+include ':simple', ':add_dagger','mvp+dagger+retrofit'

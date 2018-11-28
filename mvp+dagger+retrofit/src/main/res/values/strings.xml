@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MyRetrofitClientDemo</string>
+    <string name="toast_network_error">网络连接失败请检查网络</string>
+</resources>
