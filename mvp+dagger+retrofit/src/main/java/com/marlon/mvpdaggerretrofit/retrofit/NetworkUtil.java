@@ -12,7 +12,11 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.net.URL;
 import java.util.Enumeration;
-
+/**
+ * @desc NetworkUtil
+ * @author Marlon
+ * @date 2018/12/18
+ */
 public class NetworkUtil {
 
     public static int NET_CNNT_BAIDU_OK = 1; // NetworkAvailable

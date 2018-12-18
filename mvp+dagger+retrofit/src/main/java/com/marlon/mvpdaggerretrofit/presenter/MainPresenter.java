@@ -11,10 +11,10 @@ import com.marlon.mvpdaggerretrofit.retrofit.RxHelper;
 import javax.inject.Inject;
 
 /**
- * @author KangLong
- * @date 2017/7/6
+ * @desc MainPresenter
+ * @author Marlon
+ * @date 2018/12/18
  */
-
 public class MainPresenter extends RxPresenter<MainContract.View> implements MainContract.Presenter {
     @Inject
     public MainPresenter(App app, BaseApiService service) {

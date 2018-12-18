@@ -8,7 +8,11 @@ import com.marlon.mvpdaggerretrofit.contract.MainContract;
 import com.marlon.mvpdaggerretrofit.presenter.MainPresenter;
 
 
-
+/**
+ * @desc MvpMainActivity
+ * @author Marlon
+ * @date 2018/12/18
+ */
 public class MvpMainActivity extends BaseActivity<MainPresenter> implements MainContract.View {
 
     private TextView textView;

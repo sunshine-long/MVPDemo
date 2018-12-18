@@ -11,7 +11,7 @@ import okhttp3.HttpUrl;
 /**
  * Cookie管理类
  *
- * @author KangLong
+ * @author Marlon
  * @date 2017/6/17
  */
 

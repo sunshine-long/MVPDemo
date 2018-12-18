@@ -11,7 +11,9 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 /**
- * Created by codeest on 16/8/7.
+ * @desc AppComponent
+ * @author Marlon
+ * @date 2018/12/18
  */
 
 @Singleton

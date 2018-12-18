@@ -4,7 +4,7 @@ import com.marlon.simplemvpdemo.contract.LoginContract;
 
 /**
  * @author Marlon
- * @desc
+ * @desc 创建LoginPresenter实现LoginContract的Presenter的方法
  * @date 2018/10/8
  */
 public class LoginPresenter implements LoginContract.Presenter {

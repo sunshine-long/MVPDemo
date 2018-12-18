@@ -11,8 +11,9 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by codeest on 2016/8/2.
- * 基于Rx的Presenter封装,控制订阅的生命周期
+ * @desc RxPresenter 基于Rx的Presenter封装,控制订阅的生命周期
+ * @author Marlon
+ * @date 2018/12/18
  */
 public class RxPresenter<T extends BaseView> implements BasePresenter<T> {
     protected BaseApiService apiService;

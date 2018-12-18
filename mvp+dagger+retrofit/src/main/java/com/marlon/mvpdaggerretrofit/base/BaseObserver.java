@@ -10,8 +10,9 @@ import java.util.concurrent.TimeoutException;
 import io.reactivex.observers.DisposableObserver;
 
 /**
- * @author 康龙
- * @date 2017/5/10
+ * @desc BaseObserver
+ * @author Marlon
+ * @date 2018/12/18
  */
 public abstract class BaseObserver<T> extends DisposableObserver<BaseResponse<T>> {
     private static final String TAG = "BaseObserver";

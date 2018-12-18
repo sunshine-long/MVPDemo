@@ -19,10 +19,10 @@ import butterknife.Unbinder;
 
 
 /**
- * Created by codeest on 16/8/11.
- * 无MVP的Fragment基类
+ * @desc SimpleFragment 无MVP的Fragment基类
+ * @author Marlon
+ * @date 2018/12/18
  */
-
 public abstract class SimpleFragment extends android.support.v4.app.Fragment {
     public final String TAG = this.getClass().getSimpleName();
     protected View mView;

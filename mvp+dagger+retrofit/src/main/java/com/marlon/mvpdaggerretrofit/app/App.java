@@ -10,7 +10,9 @@ import com.marlon.mvpdaggerretrofit.di.module.HttpModule;
 
 
 /**
- * Created by KangLong on 2017/7/10.
+ * @desc App
+ * @author Marlon
+ * @date 2018/12/18
  */
 
 public class App extends Application {
@@ -31,7 +33,7 @@ public class App extends Application {
         if (appComponent == null) {
             appComponent = DaggerAppComponent.builder()
                     .appModule(new AppModule(instance))
-                    .httpModule(new HttpModule())
+                    .httpModule(new HttpModule())//这里添加
                     .build();
         }
         return appComponent;

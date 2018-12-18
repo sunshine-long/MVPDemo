@@ -7,8 +7,9 @@ import android.view.View;
 import javax.inject.Inject;
 
 /**
- * Created by codeest on 2016/8/2.
- * MVP Fragment基类
+ * @desc BaseFragment
+ * @author Marlon
+ * @date 2018/12/18
  */
 public abstract class BaseFragment<P extends BasePresenter> extends SimpleFragment implements BaseView {
 

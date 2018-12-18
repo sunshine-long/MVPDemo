@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * 封装RX线程相关，主要用于控制线程切换，和进行相关预处理
  *
- * @author 康龙
+ * @author Marlon
  * @date 2017/5/10
  */
 

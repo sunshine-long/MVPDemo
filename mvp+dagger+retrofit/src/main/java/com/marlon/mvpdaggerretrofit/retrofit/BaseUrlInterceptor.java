@@ -11,8 +11,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * 用于切换baseurl,使用方法：在BaseApiService的相关请求上面添加@Headers({"url_name:你的新url"})
+ * @desc BaseUrlInterceptor 用于切换baseurl,使用方法：在BaseApiService的相关请求上面添加@Headers({"url_name:你的新url"})
  * @author Marlon
+ * @date 2018/12/18
  */
 public class BaseUrlInterceptor implements Interceptor {
     @Override

@@ -14,9 +14,9 @@ import butterknife.Unbinder;
 
 
 /**
- * @author kanglong
- * @date 17/8/11
- * 无MVP的activity基类
+ * @desc SimpleActivity 无MVP的activity基类
+ * @author Marlon
+ * @date 2018/12/18
  */
 public abstract class SimpleActivity extends AppCompatActivity {
     protected final String TAG = this.getClass().getSimpleName();

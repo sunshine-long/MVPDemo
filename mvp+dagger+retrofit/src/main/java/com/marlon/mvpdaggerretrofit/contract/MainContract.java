@@ -5,7 +5,9 @@ import com.marlon.mvpdaggerretrofit.base.BasePresenter;
 import com.marlon.mvpdaggerretrofit.base.BaseView;
 
 /**
- * Created by KangLong on 2017/7/6.
+ * @desc MainContract
+ * @author Marlon
+ * @date 2018/12/18
  */
 
 public class MainContract {

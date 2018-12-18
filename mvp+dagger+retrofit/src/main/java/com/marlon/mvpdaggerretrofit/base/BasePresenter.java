@@ -1,9 +1,10 @@
 package com.marlon.mvpdaggerretrofit.base;
 
 /**
- * Created by 康龙 on 2017/5/9.
+ * @desc BasePresenter
+ * @author Marlon
+ * @date 2018/12/18
  */
-
 public interface BasePresenter<T extends BaseView> {
     void attachView(T view);
 

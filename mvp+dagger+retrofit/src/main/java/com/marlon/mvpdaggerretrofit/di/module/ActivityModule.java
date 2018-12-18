@@ -8,9 +8,10 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by codeest on 16/8/7.
+ * @desc ActivityModule
+ * @author Marlon
+ * @date 2018/12/18
  */
-
 @Module
 public class ActivityModule {
     private Activity mActivity;

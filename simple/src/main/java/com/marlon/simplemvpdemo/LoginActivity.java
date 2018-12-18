@@ -21,10 +21,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //初始化LoginPresenter
         mPresenter = new LoginPresenter(this);
     }
 
-    @Override
+    @Override //关联LoginPresenter
     public void setPresenter(LoginContract.Presenter presenter) {
         mPresenter = (LoginPresenter) presenter;
     }

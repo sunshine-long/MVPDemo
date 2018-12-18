@@ -6,10 +6,9 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 /**
- * 网络请求数据基本数据请求
- *
- * @author 康龙
- * @date 2017/5/10
+ * @desc BaseResponse 网络请求数据基本数据请求
+ * @author Marlon
+ * @date 2018/12/18
  */
 
 public class BaseResponse<E> implements Serializable {

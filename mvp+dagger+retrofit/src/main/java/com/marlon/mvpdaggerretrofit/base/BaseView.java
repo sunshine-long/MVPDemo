@@ -1,7 +1,9 @@
 package com.marlon.mvpdaggerretrofit.base;
 
 /**
- * Created by 康龙 on 2017/5/22.
+ * @desc BaseView
+ * @author Marlon
+ * @date 2018/12/18
  */
 
 public interface BaseView {

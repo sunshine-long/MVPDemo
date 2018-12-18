@@ -1,7 +1,9 @@
 package com.marlon.mvpdaggerretrofit.retrofit;
 
 /**
+ * @desc ApiException
  * @author Marlon
+ * @date 2018/12/18
  */
 public class ApiException extends RuntimeException {
     public static final int USER_NOT_EXIST = 100;

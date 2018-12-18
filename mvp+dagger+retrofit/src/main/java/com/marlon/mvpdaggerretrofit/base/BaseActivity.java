@@ -7,7 +7,11 @@ import com.marlon.mvpdaggerretrofit.di.component.DaggerActivityComponent;
 import com.marlon.mvpdaggerretrofit.di.module.ActivityModule;
 
 import javax.inject.Inject;
-
+/**
+ * @desc BaseActivity
+ * @author Marlon
+ * @date 2018/12/18
+ */
 public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivity implements BaseView {
     @Inject
     protected T mPresenter;

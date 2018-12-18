@@ -5,7 +5,7 @@ import com.marlon.simplemvpdemo.base.BaseView;
 
 /**
  * @author Marlon
- * @desc
+ * @desc 创建LoginContract来管理LoginView和LoginPresenter的方法接口
  * @date 2018/10/8
  */
 public class LoginContract {
