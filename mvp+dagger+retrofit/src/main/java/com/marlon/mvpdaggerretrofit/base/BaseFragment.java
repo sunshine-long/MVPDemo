@@ -1,50 +1,78 @@
 package com.marlon.mvpdaggerretrofit.base;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
-import javax.inject.Inject;
+import com.marlon.mvpdaggerretrofit.app.App;
+import com.marlon.mvpdaggerretrofit.di.component.DaggerFragmentComponent;
+import com.marlon.mvpdaggerretrofit.di.component.FragmentComponent;
+import com.marlon.mvpdaggerretrofit.di.module.FragmentModule;
+
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 
 /**
- * @desc BaseFragment
+ * @desc SimpleFragment 无MVP的Fragment基类
  * @author Marlon
  * @date 2018/12/18
  */
-public abstract class BaseFragment<P extends BasePresenter> extends SimpleFragment implements BaseView {
+public abstract class BaseFragment extends android.support.v4.app.Fragment {
+    public final String TAG = this.getClass().getSimpleName();
+    protected View mView;
+    protected Activity mActivity;
+    protected Context mContext;
+    private Unbinder mUnBinder;
+    protected boolean isInited = false;
 
-    @Inject
-    protected P mPresenter;
+    @Override
+    public void onAttach(Context context) {
+        mActivity = (Activity) context;
+        mContext = context;
+        super.onAttach(context);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mView = inflater.inflate(getLayoutId(), null);
+        return mView;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        initInject();
-        mPresenter.attachView(this);
         super.onViewCreated(view, savedInstanceState);
+        mUnBinder = ButterKnife.bind(this, view);
     }
+
 
     @Override
     public void onDestroyView() {
-        if (mPresenter != null) {
-            mPresenter.detachView();
-        }
         super.onDestroyView();
+        mUnBinder.unbind();
     }
 
-    protected abstract void initInject();
-
-
-    public void showMessage(String message) {
-        showToast(message);
+    protected void showToast(String meg) {
+        Toast.makeText(App.getInstance(), meg, Toast.LENGTH_LONG).show();
     }
 
-
-    public void gotoMain() {
-
+    protected FragmentComponent getFragmentComponent(){
+        return DaggerFragmentComponent.builder()
+                .appComponent(App.getAppComponent())
+                .fragmentModule(getFragmentModule())
+                .build();
     }
 
-    @Override
-    public void gotoLogin() {
-
+    protected FragmentModule getFragmentModule(){
+        return new FragmentModule(this);
     }
+
+    protected abstract int getLayoutId();
+    protected abstract void initEventAndData();
 }

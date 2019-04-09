@@ -1,63 +1,77 @@
 package com.marlon.mvpdaggerretrofit.base;
 
+import android.app.Activity;
+import android.graphics.Color;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Toast;
 
-import com.marlon.mvpdaggerretrofit.app.App;
-import com.marlon.mvpdaggerretrofit.di.component.ActivityComponent;
-import com.marlon.mvpdaggerretrofit.di.component.DaggerActivityComponent;
-import com.marlon.mvpdaggerretrofit.di.module.ActivityModule;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
-import javax.inject.Inject;
+
 /**
- * @desc BaseActivity
+ * @desc SimpleActivity 无MVP的activity基类
  * @author Marlon
  * @date 2018/12/18
  */
-public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivity implements BaseView {
-    @Inject
-    protected T mPresenter;
-
-    protected ActivityComponent getActivityComponent() {
-        return DaggerActivityComponent.builder()
-                .appComponent(App.getAppComponent())
-                .activityModule(getActivityModule())
-                .build();
-    }
+public abstract class BaseActivity extends AppCompatActivity {
+    protected final String TAG = this.getClass().getSimpleName();
+    protected Activity mContext;
+    private Unbinder mUnBinder;
 
     @Override
-    protected void onViewCreated() {
-        super.onViewCreated();
-        initInject();
-        if (mPresenter != null) {
-            mPresenter.attachView(this);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
+        if (getLayout() != 0) {
+            setContentView(getLayout());
+        }
+        mUnBinder = ButterKnife.bind(this);
+        mContext = this;
+        onViewCreated();
+        ActivityCollector.addActivity(this);
+        initEventAndData();
+    }
+
+    protected void showToast(String meg) {
+        Toast.makeText(this, meg, Toast.LENGTH_LONG).show();
+    }
+
+
+    protected void showLoadingDialog() {
+
+    }
+
+    protected void dissmissLoadingDialog() {
+
+    }
+
+    public void goToLogionActivity() {
+
+    }
+
+    protected void onViewCreated() {
+
     }
 
     @Override
     protected void onDestroy() {
-        if (mPresenter != null) {
-            mPresenter.detachView();
-        }
         super.onDestroy();
+        ActivityCollector.removeActivity(this);
+        mUnBinder.unbind();
     }
 
-    protected abstract void initInject();
+    protected abstract int getLayout();
 
-    public ActivityModule getActivityModule() {
-        return new ActivityModule(this);
-    }
-
-    /*@Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus && Build.VERSION.SDK_INT >= 19) {
-            View decorView = getWindow().getDecorView();
-            decorView.setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-        }
-    }*/
+    protected abstract void initEventAndData();
 }

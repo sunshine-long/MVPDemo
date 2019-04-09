@@ -15,10 +15,10 @@ import io.reactivex.disposables.Disposable;
  * @author Marlon
  * @date 2018/12/18
  */
-public class RxPresenter<T extends BaseView> implements BasePresenter<T> {
+public class RxPresenter<V extends BaseView> implements BasePresenter<V> {
     protected BaseApiService apiService;
     protected Context mContext;
-    protected T mView;
+    protected V mView;
     private CompositeDisposable mCompositeDisposable;
 
     public RxPresenter(App mContext, BaseApiService apiService) {
@@ -51,8 +51,9 @@ public class RxPresenter<T extends BaseView> implements BasePresenter<T> {
         mCompositeDisposable.add(observable.compose(RxHelper.io_main(mContext)).subscribeWith(observer));
     }
 
+
     @Override
-    public void attachView(T view) {
+    public void attachView(V view) {
         this.mView = view;
     }
 

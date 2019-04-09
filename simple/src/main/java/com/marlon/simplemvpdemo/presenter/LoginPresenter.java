@@ -1,5 +1,7 @@
 package com.marlon.simplemvpdemo.presenter;
 
+import android.os.Looper;
+
 import com.marlon.simplemvpdemo.contract.LoginContract;
 
 /**
@@ -8,10 +10,11 @@ import com.marlon.simplemvpdemo.contract.LoginContract;
  * @date 2018/10/8
  */
 public class LoginPresenter implements LoginContract.Presenter {
-    private LoginContract.View view;
+    private LoginContract.View mView;
 
     public LoginPresenter(LoginContract.View view) {
-        this.view = view;
+        this.mView = view;
+        mView.setPresenter(this);
     }
 
     @Override
@@ -21,8 +24,10 @@ public class LoginPresenter implements LoginContract.Presenter {
             public void run() {
                 try {
                     Thread.sleep(3000);
-                    view.showToast("登录成功");
-                    view.gotoMain();
+                    Looper.prepare();
+                    mView.showToast("登录成功");
+                    mView.gotoMain();
+                    Looper.loop();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
