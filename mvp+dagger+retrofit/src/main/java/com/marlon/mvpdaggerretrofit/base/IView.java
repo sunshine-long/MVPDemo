@@ -6,7 +6,7 @@ package com.marlon.mvpdaggerretrofit.base;
  * @date 2018/12/18
  */
 
-public interface BaseView {
+public interface IView {
     void gotoLogin();
     void showLoading();
     void dismissLoading();

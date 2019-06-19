@@ -1,8 +1,8 @@
 package com.marlon.mvpdaggerretrofit.contract;
 
 
-import com.marlon.mvpdaggerretrofit.base.BasePresenter;
-import com.marlon.mvpdaggerretrofit.base.BaseView;
+import com.marlon.mvpdaggerretrofit.base.IPresenter;
+import com.marlon.mvpdaggerretrofit.base.IView;
 
 /**
  * @desc MainContract
@@ -11,12 +11,13 @@ import com.marlon.mvpdaggerretrofit.base.BaseView;
  */
 
 public class MainContract {
-    public interface View extends BaseView {
+    public interface View extends IView {
         void showData(String s);
     }
 
-    public interface Presenter extends BasePresenter<View> {
+    public interface Presenter extends IPresenter<View> {
         void getVersion();
 
     }
+
 }

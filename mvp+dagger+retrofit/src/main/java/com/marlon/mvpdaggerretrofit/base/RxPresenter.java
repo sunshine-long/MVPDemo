@@ -11,11 +11,11 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
 /**
- * @desc RxPresenter 基于Rx的Presenter封装,控制订阅的生命周期
  * @author Marlon
+ * @desc RxPresenter 基于Rx的Presenter封装,控制订阅的生命周期
  * @date 2018/12/18
  */
-public class RxPresenter<V extends BaseView> implements BasePresenter<V> {
+public class RxPresenter<V extends IView> implements IPresenter<V>, IModel {
     protected BaseApiService apiService;
     protected Context mContext;
     protected V mView;
@@ -26,25 +26,8 @@ public class RxPresenter<V extends BaseView> implements BasePresenter<V> {
         this.mContext = mContext;
     }
 
-    /**
-     * 取消注册 中断请求
-     */
-    protected void unSubscribe() {
-        if (mCompositeDisposable != null) {
-            mCompositeDisposable.dispose();
-            mCompositeDisposable.clear();
-        }
-    }
-
-    //注册
-    protected void addSubscribe(Disposable subscription) {
-        if (mCompositeDisposable == null) {
-            mCompositeDisposable = new CompositeDisposable();
-        }
-        mCompositeDisposable.add(subscription);
-    }
-
-    protected void addSubscribe(Observable<?> observable, BaseObserver observer) {
+    @Override
+    public void addSubscribe(Observable<?> observable, BaseObserver observer) {
         if (mCompositeDisposable == null) {
             mCompositeDisposable = new CompositeDisposable();
         }
@@ -57,9 +40,26 @@ public class RxPresenter<V extends BaseView> implements BasePresenter<V> {
         this.mView = view;
     }
 
+
+    @Override
+    public void addDisposable(Disposable disposable) {
+        if (mCompositeDisposable == null) {
+            mCompositeDisposable = new CompositeDisposable();
+        }
+        mCompositeDisposable.add(disposable);
+    }
+
+    @Override
+    public void onDetach() {
+        if (mCompositeDisposable != null) {
+            mCompositeDisposable.dispose();
+            mCompositeDisposable.clear();
+        }
+    }
+
     @Override
     public void detachView() {
         this.mView = null;
-        unSubscribe();
+        onDetach();
     }
 }

@@ -1,12 +1,12 @@
 package com.marlon.mvpdaggerretrofit.base;
 
-/**
- * @desc BasePresenter
- * @author Marlon
- * @date 2018/12/18
- */
-public interface BasePresenter<V extends BaseView> {
-    void attachView(V view);
+import android.arch.lifecycle.LifecycleObserver;
 
-    void detachView();
+/**
+ * @author Marlon
+ * @desc
+ * @date 2019/6/18
+ */
+public abstract class BasePresenter<M extends IModel,V extends IView> implements IPresenter<V>, LifecycleObserver {
+
 }

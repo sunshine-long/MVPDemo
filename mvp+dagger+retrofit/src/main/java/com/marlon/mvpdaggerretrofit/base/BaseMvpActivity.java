@@ -12,7 +12,7 @@ import javax.inject.Inject;
  * @author Marlon
  * @date 2018/12/18
  */
-public abstract class BaseMvpActivity<T extends RxPresenter> extends BaseActivity implements BaseView {
+public abstract class BaseMvpActivity<T extends RxPresenter> extends BaseActivity implements IView {
     @Inject
     protected T mPresenter;
 

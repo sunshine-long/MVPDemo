@@ -11,7 +11,7 @@ import javax.inject.Inject;
  * @author Marlon
  * @date 2018/12/18
  */
-public abstract class BaseMvpFragment<P extends BasePresenter> extends BaseFragment implements BaseView {
+public abstract class BaseMvpFragment<P extends IPresenter> extends BaseFragment implements IView {
 
     @Inject
     protected P mPresenter;

@@ -25,7 +25,7 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
     @Override
     public void getVersion() {
         //使用方式一
-        addSubscribe(apiService.getVerisionRxjava()
+        addDisposable(apiService.getVerisionRxjava()
                 .compose(RxHelper.io_main(mContext))
                 .subscribeWith(new BaseObserver<Resond>() {
                     @Override
